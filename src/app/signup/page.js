@@ -4,10 +4,12 @@ import { ArrowRight } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import signupSchema from '@/schemas/signup'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/navigation'
 export default function SignUp() {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(signupSchema),
     })
+    const router = useRouter()
     const onSubmit = (data) => {
         // console.log(data)
     }
@@ -15,7 +17,7 @@ export default function SignUp() {
         <section>
             <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
                 <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
-                    <div className="mb-2 flex justify-center">
+                    <div className="mb-2 flex justify-center cursor-pointer" onClick={() => router.push('/')}>
                         <svg
                             width="50"
                             height="56"
